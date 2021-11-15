@@ -31,3 +31,9 @@ Route::get('etspweb', 'ViewController@showETS');
 
 Route::get('show', 'ViewController@showForm');
 Route::get('recursive', 'ViewController@recursiveFunc');
+
+//route CRUD
+Route::get('/pegawai','PegawaiController@index');
+
+Route::get('/pegawai/tambah','PegawaiController@tambah');
+Route::post('/pegawai/store','PegawaiController@store');
