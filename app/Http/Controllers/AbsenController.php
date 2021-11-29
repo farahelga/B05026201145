@@ -21,8 +21,12 @@ class AbsenController extends Controller
     public function tambah()
     {
 
-        // memanggil view tambah
-        return view('absen.tambah');
+    // memanggil view tambah
+    $pegawai = DB::table('pegawai')->orderBy('pegawai_nama', 'asc')->get();
+
+
+	return view('absen.tambah', ['pegawai' => $pegawai]);
+
     }
 
    // method untuk insert data ke table absen
@@ -30,9 +34,9 @@ class AbsenController extends Controller
    {
        // insert data ke table pegawai
        DB::table('absen')->insert([
-           'absen_idpegawai' => $request->id_pegawai,
-           'absen_tanggal' => $request->tanggal,
-           'absen_status' => $request->status,
+           'IDPegawai' => $request->IDPegawai,
+           'Tanggal' => $request->Tanggal,
+           'Status' => $request->Status,
        ]);
        // alihkan halaman ke halaman absen
        return redirect('/absen');
@@ -42,22 +46,25 @@ class AbsenController extends Controller
    // method untuk edit data absen
    public function edit($id)
    {
-       // mengambil data absen berdasarkan id yang dipilih
-       $absen = DB::table('absen')->where('absen_id',$id)->get();
+	// mengambil data pegawai berdasarkan id yang dipilih
+	$absen = DB::table('absen')->where('ID',$id)->get();
 
-       // passing data absen yang didapat ke view edit.blade.php
-       return view('absen.edit',['absen' => $absen]);
+    $pegawai = DB::table('pegawai')->orderBy('pegawai_nama', 'asc')->get();
 
-   }
+    $judul = "Haloo Apa Kabar" ;
+
+	// passing data pegawai yang didapat ke view edit.blade.php
+	return view('absen.edit',['absen' => $absen,'pegawai' => $pegawai,'judul' => $judul]);
+    }
 
        // update data pegawai
    public function update(Request $request)
    {
        // update data absen
-       DB::table('absen')->where('absen_id',$request->id)->update([
-           'absen_idpegawai' => $request->id_pegawai,
-           'absen_tanggal' => $request->tanggal,
-           'absen_status' => $request->status,
+       DB::table('absen')->where('ID',$request->ID)->update([
+           'IDPegawai' => $request->IDPegawai,
+           'Tanggal' => $request->Tanggal,
+           'Status' => $request->Status,
        ]);
        // alihkan halaman ke halaman absen
        return redirect('/absen');
@@ -67,7 +74,7 @@ class AbsenController extends Controller
    public function hapus($id)
    {
        // menghapus data absen berdasarkan id yang dipilih
-       DB::table('absen')->where('absen_id',$id)->delete();
+       DB::table('absen')->where('ID',$id)->delete();
 
        // alihkan halaman ke halaman pegawai
        return redirect('/absen');
