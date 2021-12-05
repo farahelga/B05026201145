@@ -1,38 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tugas Minggu 13 Pemrograman Web</title>
-</head>
-<body>
+@extends('layout.ceria')
 
-	<h2>Farah Helga Az-Zahra 5026201145</h2>
-	<h3>Data Absen</h3>
+@section('title', 'ABSEN PEGAWAI')
+
+@section('isikonten')
+
+@section('subtitle', 'Data Absen')
 
 	<a href="/absen/tambah"> + Tambah Absen Baru</a>
 
 	<br/>
 	<br/>
 
-	<table border="1">
-		<tr>
-			<th>IDPegawai</th>
-			<th>Tanggal</th>
-			<th>Status</th>
-		</tr>
-		@foreach($absen as $a)
-		<tr>
-			<td>{{ $a->IDPegawai }}</td>
-			<td>{{ $a->Tanggal }}</td>
-			<td>{{ $a->Status }}</td>
-			<td>
-				<a href="/absen/edit/{{ $a->ID }}">Edit</a>
-				|
-				<a href="/absen/hapus/{{ $a->ID }}">Hapus</a>
-			</td>
-		</tr>
-		@endforeach
+	<table class="table">
+        <thead>
+            <tr>
+              <th scope="col">IDPegawai</th>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Status</th>
+              <th scope="col">Opsi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($absen as $a)
+            <tr>
+                <td>{{ $a->IDPegawai }}</td>
+                <td>{{ $a->Tanggal }}</td>
+                <td>{{ $a->Status }}</td>
+                <td>
+                    <a href="/absen/edit/{{ $a->ID }}">Edit</a>
+                    |
+                    <a href="/absen/hapus/{{ $a->ID }}">Hapus</a>
+                </td>
+            </tr>
+		    @endforeach
+        </tbody>
 	</table>
 
-
-</body>
-</html>
+@endsection
