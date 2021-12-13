@@ -3,51 +3,53 @@
 @section('title', 'PEGAWAI')
 
 @section('isikonten')
-@section('subtitle', 'Data Pegawai')
+@section('subtitle', 'Detail Pegawai')
 
 	<a href="/pegawai"> Kembali</a>
 
 	<br/>
 	<br/>
 
-	<form action="/pegawai/store" method="post">
-		{{ csrf_field() }}
+	@foreach($pegawai as $p)
+
 
         <div class="form-group row">
             <label for="nama" class="col-sm-2 control-label"> Nama :</label>
             <div class="col-sm-4">
-                <input type="text" id="nama" class="form-control" name="nama" required="required">
+                {{ $p->pegawai_nama }}
             </div>
         </div>
 
         <div class="form-group row">
             <label for="jabatan" class="col-sm-2 control-label"> Jabatan :</label>
             <div class="col-sm-4">
-                <input type="text" id="jabatan" class="form-control" name="jabatan" required="required">
+                {{ $p->pegawai_jabatan }}
             </div>
         </div>
 
         <div class="form-group row">
             <label for="umur" class="col-sm-2 control-label"> Umur :</label>
             <div class="col-sm-4">
-                <input type="number" id="umur" class="form-control" name="umur" required="required">
+                {{ $p->pegawai_umur }}
             </div>
         </div>
 
         <div class="form-group row">
             <label for="alamat" class="col-sm-2 control-label"> Alamat :</label>
             <div class="col-sm-4">
-                <textarea id="alamat" class="form-control" name="alamat" required="required"></textarea>
+                {{ $p->pegawai_alamat }}
             </div>
         </div>
 
-		{{-- Nama <input type="text" name="nama" required="required"> <br/>
-		Jabatan <input type="text" name="jabatan" required="required"> <br/>
-		Umur <input type="number" name="umur" required="required"> <br/>
-		Alamat <textarea name="alamat" required="required"></textarea> <br/>
+
+
+		{{-- Nama <input type="text" required="required" name="nama" value="{{ $p->pegawai_nama }}"> <br/>
+		Jabatan <input type="text" required="required" name="jabatan" value="{{ $p->pegawai_jabatan }}"> <br/>
+		Umur <input type="number" required="required" name="umur" value="{{ $p->pegawai_umur }}"> <br/>
+		Alamat <textarea required="required" name="alamat">{{ $p->pegawai_alamat }}</textarea> <br/>
 		<input type="submit" value="Simpan Data"> --}}
 
-        <button type="submit" class="btn btn-primary" value="Simpan Data">Submit</button>
-	</form>
+    @endforeach
 
 @endsection
+

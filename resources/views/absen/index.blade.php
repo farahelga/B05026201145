@@ -11,10 +11,20 @@
 	<br/>
 	<br/>
 
+    <div class="container" align="center">
+        <form action="/absen/cari" method="GET">
+            <input type="text" class="form-control" name="cari" placeholder="Cari pegawai berdasarkan nama .." value="{{ old('cari') }}">
+            <input type="submit" class="btn btn-default" value="CARI">
+        </form>
+    </div>
+
+    <br/>
+    <br/>
+
 	<table class="table">
         <thead>
             <tr>
-              <th scope="col">IDPegawai</th>
+              <th scope="col">Nama Pegawai</th>
               <th scope="col">Tanggal</th>
               <th scope="col">Status</th>
               <th scope="col">Opsi</th>
@@ -24,7 +34,7 @@
         <tbody>
             @foreach($absen as $a)
             <tr>
-                <td>{{ $a->IDPegawai }}</td>
+                <td>{{ $a->pegawai_nama }}</td>
                 <td>{{ $a->Tanggal }}</td>
                 <td>{{ $a->Status }}</td>
                 <td>
@@ -36,5 +46,7 @@
 		    @endforeach
         </tbody>
 	</table>
+
+    {{ $absen->links() }}
 
 @endsection
