@@ -59,3 +59,9 @@ Route::post('/beras/update','BerasController@update');
 Route::get('/beras/hapus/{id}','BerasController@hapus');
 Route::get('/beras/view/{id}','BerasController@detail');
 
+//eas kode soal D4
+Route::get('/keranjangbelanja','keranjangBelanjaController@index');
+Route::get('/keranjangbelanja/tambah','KeranjangBelanjaController@tambah');
+Route::get('/keranjangbelanja/hapus/{id}','KeranjangBelanjaController@hapus');
+Route::post('/keranjangbelanja/store','KeranjangBelanjaController@store');
+Route::get('/keranjangbelanja/hapus/{id}','KeranjangBelanjaController@hapus');

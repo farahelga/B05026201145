@@ -129,6 +129,10 @@
                 <li>
                     <a href="http://127.0.0.1:8000/beras">Beras</a>
                 </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/keranjangbelanja">Keranjang Belanja</a>
+                </li>
             </ul>
         </nav>
 
